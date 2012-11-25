@@ -1,4 +1,4 @@
-Rooms = new Meteor.Collection "rooms"
+Rooms    = new Meteor.Collection "rooms"
 Messages = new Meteor.Collection "messages"
 Builders = new Meteor.Collection "builders"
 
@@ -21,15 +21,10 @@ Template.location.editing = () ->
   Session.get('editing')
 
 Template.navbar.events {
-    'click .navbar .add': () ->
-      if available_exits().length == 0
-        malert('All directions are taken')
-  , 'click .navbar .users': () ->
+    'click .navbar .users': () ->
       if !is_admin() then return
       $('#listUsers').modal('show')
 }
-
-Template.navbar.canAddRoom = () -> is_builder()
 
 Template.navbar.admin = () -> is_admin()
 
