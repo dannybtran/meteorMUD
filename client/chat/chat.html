@@ -1,0 +1,8 @@
+<template name="chat">
+  <div class="chat">
+    <h3>Chat</h3>
+    <ul class="chatlog">{{#each messages}}<li>{{{this}}}</li>{{/each}}</ul><br/>
+    <input type="text" class="message" value="" placeholder="Start typing" /><br/>
+    <button class="send btn">Send</button>
+  </div>
+</template>

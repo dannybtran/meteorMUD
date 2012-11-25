@@ -1,0 +1,44 @@
+<head>
+  <title>mud</title>
+</head>
+
+<body>
+  {{> navbar}}
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        {{> location}}
+      </div>
+    </div>
+  </div>
+  {{> modals}}
+</body>
+
+<template name="navbar">
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a href="#" class="brand">MeteorMUD</a>
+        <ul class="nav">
+        </ul>
+        <div class="login">{{loginButtons}}</div>
+        <ul class="nav pull-right">
+          {{#if admin}}<li><a href="#" class="users">Users</a></li>{{/if}}
+          {{#if admin}}<li><a href="#" class="items">Items</a></li>{{/if}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="location">
+  {{#if editing}}
+    {{> editRoom}}
+  {{else}}
+    {{> showRoom}}
+  {{/if}}
+</template>
+
+<template name="modals">
+  {{#if admin}}{{> listUsers}}{{/if}}
+</template>

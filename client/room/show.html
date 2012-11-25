@@ -1,0 +1,45 @@
+<template name="showRoom">
+  <div class="showRoom">
+    {{#if current_room.locked}}<i class="icon-lock" title="No edits can be made."></i>{{/if}}
+
+    {{#if canEdit}}<button class="edit btn">Edit</button>{{/if}}
+
+    {{#if canLock}}
+      <button class="lock btn">
+        {{#if current_room.locked}}Unlock{{else}}Lock{{/if}}
+      </button>
+    {{/if}}
+
+    <h1>{{current_room.title}}</h1>
+    <hr/>
+
+    <p class="description">{{current_room.description}}</p>
+    <hr/>
+
+    {{#if exits}}
+      <h3>You see the following exits:</h3>
+      {{#each exits}}
+        <button class="exit btn" data-room="{{room._id}}">{{direction}}</button>
+      {{/each}}
+    {{else}}
+      No exits
+    {{/if}}
+    <hr/>
+
+    {{#if canEdit}}
+      <h3>You can build rooms at the following exits:</h3>
+      {{#each buildExits}}
+        <button class="build-exit btn" data-direction="{{this}}">{{this}}</button>
+      {{/each}}
+      <hr/>
+    {{/if}}
+
+    {{#if canAdd}}
+      {{> addRoom}}
+    {{/if}}
+
+    {{#if loggedIn}}
+      {{> chat}}
+    {{/if}}
+  </div>
+</template>
